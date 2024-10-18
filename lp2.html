@@ -1,0 +1,205 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Zane!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+            background-image: url('img/lp2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .message {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .countdown {
+            font-size: 2em;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite; /* Add pulse animation */
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .sing-button {
+            padding: 10px 20px;
+            background-color: skyblue; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: none; /* Hidden initially */
+            transition: background-color 0.3s;
+        }
+
+        .sing-button:hover {
+            background-color: #e64a19; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Again .. Happy Birthday Zane! 🎉</h1>
+    <div class="message" id="message">Last but not least! Our ultimate special gift is something that comes straight from the heart - Our Voices!! Every word is filled with love and joy we have for you!</div>
+    <div class="countdown" id="countdown"></div>
+    <button class="sing-button" id="singButton" onclick="startSinging()">Let's Sing Happy Birthday!</button>
+
+    <script>
+        const message = document.getElementById('message');
+        const countdownDisplay = document.getElementById('countdown');
+        const singButton = document.getElementById('singButton');
+
+        // Show the main message with animation
+        setTimeout(() => {
+            message.style.opacity = '1';
+            message.style.transform = 'translateY(0)';
+        }, 1000); // Show after 1 second
+
+        // Countdown logic
+        let countdown = 5; // Starting countdown from 5 seconds
+        const countdownInterval = setInterval(() => {
+            countdownDisplay.textContent = countdown;
+            countdown--;
+            if (countdown < 0) {
+                clearInterval(countdownInterval);
+                countdownDisplay.textContent = "Happy Birthday!";
+                singButton.style.display = 'block'; // Show the button to start singing
+            }
+        }, 1000); // Update every second
+
+        function startSinging() {
+            alert("🎶 Happy Birthday to You! 🎶");
+            // Here you can add more logic to play music if you want
+        }
+    </script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Zane!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+            background-image: url('img/lp2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .message {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .countdown {
+            font-size: 2em;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite; /* Add pulse animation */
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .sing-button {
+            padding: 10px 20px;
+            background-color: skyblue; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: none; /* Hidden initially */
+            transition: background-color 0.3s;
+        }
+
+        .sing-button:hover {
+            background-color: #e64a19; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Again .. Happy Birthday Zane! 🎉</h1>
+    <div class="message" id="message">Last but not least! Our ultimate special gift is something that comes straight from the heart - Our Voices!! Every word is filled with love and joy we have for you!</div>
+    <div class="countdown" id="countdown"></div>
+    <button class="sing-button" id="singButton" onclick="startSinging()">Let's Sing Happy Birthday!</button>
+
+    <script>
+        const message = document.getElementById('message');
+        const countdownDisplay = document.getElementById('countdown');
+        const singButton = document.getElementById('singButton');
+
+        // Show the main message with animation
+        setTimeout(() => {
+            message.style.opacity = '1';
+            message.style.transform = 'translateY(0)';
+        }, 1000); // Show after 1 second
+
+        // Countdown logic
+        let countdown = 5; // Starting countdown from 5 seconds
+        const countdownInterval = setInterval(() => {
+            countdownDisplay.textContent = countdown;
+            countdown--;
+            if (countdown < 0) {
+                clearInterval(countdownInterval);
+                countdownDisplay.textContent = "Happy Birthday!";
+                singButton.style.display = 'block'; // Show the button to start singing
+            }
+        }, 1000); // Update every second
+
+        function startSinging() {
+            alert("🎶 Happy Birthday to You! 🎶");
+            // Here you can add more logic to play music if you want
+        }
+    </script>
+</body>
+</html>
+>>>>>>> aa67ecdcb1cd4714e35999350e3cc3d7fa03dd8a

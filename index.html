@@ -1,0 +1,219 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Zane</title>
+    <style>
+        body {
+            margin: 150px;
+            overflow: hidden;
+            background-image: url('img/bgintro.jpg'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            /* align-items: center;  */
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: rgb(255, 224, 0); 
+            margin-bottom: 10px;
+            margin-left: -500px;
+            animation: fadeIn 2s;
+              /* Add text stroke and shadow for visual effect */
+            -webkit-text-stroke: grey; /* 2px rgb(255, 246, 125);  Stroke for WebKit-based browsers */
+            text-shadow: 2px 2px 4px black; /* Text shadow as fallback */
+
+        }
+
+        p {
+            font-size: 1.5em;
+            color: rgb(255, 224, 0);
+            margin-bottom: 40px;
+            margin-left: -500px;
+            animation: fadeIn 3s;
+              /* Add text stroke and shadow for visual effect */
+            -webkit-text-stroke: grey; /* 2px rgb(255, 246, 125);  Stroke for WebKit-based browsers */
+            text-shadow: 2px 2px 4px black; /* Text shadow as fallback */
+
+
+        }
+
+        #continue-btn {
+            margin-left: -500px;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: rgb(255, 224, 0);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+            animation: fadeIn 4s forwards;
+            -webkit-text-stroke: grey;
+            text-shadow: 2px 2px 4px black; /* Text shadow as fallback */
+            text-decoration: none;
+
+        }
+
+         #continue-btn a {
+            color: white; /* Set the link color to match the button text */
+            text-decoration: none; /* This removes the underline from the link */
+        }
+
+        #continue-btn:hover {
+            background-color: rgb(255, 183, 75);
+            color: white;
+            -webkit-text-stroke: grey;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Zane!</h1>
+        <p>Can you guess what’s waiting for you?</p>
+        <button id="continue-btn"><a href= 'p1.html'>Let the fun begin!</a></button>
+    </div>
+
+
+    <script>
+        // Show the button after a delay
+        setTimeout(function() {
+            document.getElementById('continue-btn').style.display = 'inline-block';
+        }, 4000);
+    </script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Zane</title>
+    <style>
+        body {
+            margin: 150px;
+            overflow: hidden;
+            background-image: url('img/bgintro.jpg'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            /* align-items: center;  */
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: rgb(255, 224, 0); 
+            margin-bottom: 10px;
+            margin-left: -500px;
+            animation: fadeIn 2s;
+              /* Add text stroke and shadow for visual effect */
+            -webkit-text-stroke: grey; /* 2px rgb(255, 246, 125);  Stroke for WebKit-based browsers */
+            text-shadow: 2px 2px 4px black; /* Text shadow as fallback */
+
+        }
+
+        p {
+            font-size: 1.5em;
+            color: rgb(255, 224, 0);
+            margin-bottom: 40px;
+            margin-left: -500px;
+            animation: fadeIn 3s;
+              /* Add text stroke and shadow for visual effect */
+            -webkit-text-stroke: grey; /* 2px rgb(255, 246, 125);  Stroke for WebKit-based browsers */
+            text-shadow: 2px 2px 4px black; /* Text shadow as fallback */
+
+
+        }
+
+        #continue-btn {
+            margin-left: -500px;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: rgb(255, 224, 0);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+            animation: fadeIn 4s forwards;
+            -webkit-text-stroke: grey;
+            text-shadow: 2px 2px 4px black; /* Text shadow as fallback */
+            text-decoration: none;
+
+        }
+
+         #continue-btn a {
+            color: white; /* Set the link color to match the button text */
+            text-decoration: none; /* This removes the underline from the link */
+        }
+
+        #continue-btn:hover {
+            background-color: rgb(255, 183, 75);
+            color: white;
+            -webkit-text-stroke: grey;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Zane!</h1>
+        <p>Can you guess what’s waiting for you?</p>
+        <button id="continue-btn"><a href= 'p1.html'>Let the fun begin!</a></button>
+    </div>
+
+
+    <script>
+        // Show the button after a delay
+        setTimeout(function() {
+            document.getElementById('continue-btn').style.display = 'inline-block';
+        }, 4000);
+    </script>
+</body>
+</html>
+>>>>>>> aa67ecdcb1cd4714e35999350e3cc3d7fa03dd8a

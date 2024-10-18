@@ -1,0 +1,347 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Zane</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url('img/pp1bg.jpg');
+            overflow: hidden;
+            position: relative;
+            animation: backgroundAnimation 10s ease-in-out infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: rgba(240, 248, 255, 0.9);
+            }
+            50% {
+                background-color: rgba(173, 216, 230, 0.9); 
+            }
+            100% {
+                background-color: rgba(240, 248, 255, 0.9);
+            }
+        }
+
+        h1 {
+            font-size: 5em;
+            color: skyblue;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+            animation: textAnimation 3s ease-in-out infinite;
+        }
+
+        @keyframes textAnimation {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: white;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+        }
+
+        a { 
+            margin-top: 30px;
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: skyblue;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+            cursor: pointer;
+        }
+
+        button { 
+            margin-top: 20px;
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+            cursor: pointer;
+        }
+
+        a:hover {
+            background-color: rgb(0, 96, 154); 
+        }
+
+        button:hover {
+            background-color: rgba(0, 27, 50); 
+        }
+
+        footer {
+            margin-top: 10px;
+            font-size: 0.8em;
+            text-align: center; 
+        }
+
+        .heart {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            width: 100px;
+            height: 100px;
+            background-image: url('img/heartshape.png'); 
+            background-size: cover;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100px) translateX(30vw); opacity: 0; }
+        }
+
+        /* Initially hide the video */
+        #birthdayVideo {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉Happy Birthday Zane🎉</h1>
+    <p>Happy Birthday, Zane!! 🎉🎂 You totally got surprised, right? 😏 I bet you did! If you didn’t, well, surprise! 🎊 That’s just a taste of the fun! Now, hold onto your hair because there’s more silliness coming your way! 😜</p>
+    
+    <!-- Button to replay the video -->
+    <button onclick="playAgain()">Watch Again 🎥</button>
+    <a href="ppg1.html">Bring it on 💪🎊</a>
+
+    <footer>
+        <!-- Floating Hearts with Independent Animation -->
+        <div class="heart" style="left: 5%; animation-delay: 0s; animation-duration: 6s;"></div>
+        <div class="heart" style="left: 10%; animation-delay: 0.4s; animation-duration: 5.8s;"></div>
+        <div class="heart" style="left: 20%; animation-delay: 0.8s; animation-duration: 6.2s;"></div>
+        <div class="heart" style="left: 30%; animation-delay: 1.2s; animation-duration: 5.5s;"></div>
+        <div class="heart" style="left: 40%; animation-delay: 1.6s; animation-duration: 6.1s;"></div>
+        <div class="heart" style="left: 50%; animation-delay: 2.0s; animation-duration: 5.7s;"></div>
+        <div class="heart" style="left: 60%; animation-delay: 2.4s; animation-duration: 6.5s;"></div>
+        <div class="heart" style="left: 70%; animation-delay: 2.8s; animation-duration: 5.9s;"></div>
+        <div class="heart" style="left: 80%; animation-delay: 3.2s; animation-duration: 6.3s;"></div>
+        <div class="heart" style="left: 90%; animation-delay: 3.6s; animation-duration: 5.6s;"></div>
+    </footer>
+
+    <!-- Hidden Video Element -->
+    <video id="birthdayVideo" width="100%" height="auto" controls>
+        <source src="https://drive.google.com/file/d/16urgTssaiVYOzOS_raH23xUiTlWKttzN/view?usp=drive_link" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function playAgain() {
+            // Show the video when the button is clicked
+            const video = document.getElementById('birthdayVideo');
+            video.style.display = 'block'; // Make video visible
+            video.play(); // Play the video
+            video.requestFullscreen(); // Enter fullscreen mode
+
+            // When the video ends, hide it again
+            video.onended = function() {
+                video.style.display = 'none'; // Hide the video
+                document.exitFullscreen(); // Exit fullscreen mode after video ends
+            };
+        }
+    </script>
+
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Zane</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url('img/pp1bg.jpg');
+            overflow: hidden;
+            position: relative;
+            animation: backgroundAnimation 10s ease-in-out infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: rgba(240, 248, 255, 0.9);
+            }
+            50% {
+                background-color: rgba(173, 216, 230, 0.9); 
+            }
+            100% {
+                background-color: rgba(240, 248, 255, 0.9);
+            }
+        }
+
+        h1 {
+            font-size: 5em;
+            color: skyblue;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+            animation: textAnimation 3s ease-in-out infinite;
+        }
+
+        @keyframes textAnimation {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: white;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+        }
+
+        a { 
+            margin-top: 30px;
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: skyblue;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+            cursor: pointer;
+        }
+
+        button { 
+            margin-top: 20px;
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            -webkit-text-stroke: grey; 
+            text-shadow: 2px 2px 4px black;
+            cursor: pointer;
+        }
+
+        a:hover {
+            background-color: rgb(0, 96, 154); 
+        }
+
+        button:hover {
+            background-color: rgba(0, 27, 50); 
+        }
+
+        footer {
+            margin-top: 10px;
+            font-size: 0.8em;
+            text-align: center; 
+        }
+
+        .heart {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            width: 100px;
+            height: 100px;
+            background-image: url('img/heartshape.png'); 
+            background-size: cover;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100px) translateX(30vw); opacity: 0; }
+        }
+
+        /* Initially hide the video */
+        #birthdayVideo {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎉Happy Birthday Zane🎉</h1>
+    <p>Happy Birthday, Zane!! 🎉🎂 You totally got surprised, right? 😏 I bet you did! If you didn’t, well, surprise! 🎊 That’s just a taste of the fun! Now, hold onto your hair because there’s more silliness coming your way! 😜</p>
+    
+    <!-- Button to replay the video -->
+    <button onclick="playAgain()">Watch Again 🎥</button>
+    <a href="ppg1.html">Bring it on 💪🎊</a>
+
+    <footer>
+        <!-- Floating Hearts with Independent Animation -->
+        <div class="heart" style="left: 5%; animation-delay: 0s; animation-duration: 6s;"></div>
+        <div class="heart" style="left: 10%; animation-delay: 0.4s; animation-duration: 5.8s;"></div>
+        <div class="heart" style="left: 20%; animation-delay: 0.8s; animation-duration: 6.2s;"></div>
+        <div class="heart" style="left: 30%; animation-delay: 1.2s; animation-duration: 5.5s;"></div>
+        <div class="heart" style="left: 40%; animation-delay: 1.6s; animation-duration: 6.1s;"></div>
+        <div class="heart" style="left: 50%; animation-delay: 2.0s; animation-duration: 5.7s;"></div>
+        <div class="heart" style="left: 60%; animation-delay: 2.4s; animation-duration: 6.5s;"></div>
+        <div class="heart" style="left: 70%; animation-delay: 2.8s; animation-duration: 5.9s;"></div>
+        <div class="heart" style="left: 80%; animation-delay: 3.2s; animation-duration: 6.3s;"></div>
+        <div class="heart" style="left: 90%; animation-delay: 3.6s; animation-duration: 5.6s;"></div>
+    </footer>
+
+    <!-- Hidden Video Element -->
+    <video id="birthdayVideo" width="100%" height="auto" controls>
+        <source src="https://drive.google.com/file/d/16urgTssaiVYOzOS_raH23xUiTlWKttzN/view?usp=drive_link" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function playAgain() {
+            // Show the video when the button is clicked
+            const video = document.getElementById('birthdayVideo');
+            video.style.display = 'block'; // Make video visible
+            video.play(); // Play the video
+            video.requestFullscreen(); // Enter fullscreen mode
+
+            // When the video ends, hide it again
+            video.onended = function() {
+                video.style.display = 'none'; // Hide the video
+                document.exitFullscreen(); // Exit fullscreen mode after video ends
+            };
+        }
+    </script>
+
+</body>
+</html>
+>>>>>>> aa67ecdcb1cd4714e35999350e3cc3d7fa03dd8a

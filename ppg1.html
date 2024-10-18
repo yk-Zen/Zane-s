@@ -1,0 +1,451 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Boxes</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+            background-image: url('img/ppg1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center; /* Center text */
+            position: relative; /* For positioning overlay */
+            opacity: 0; /* Start hidden */
+            animation: fade-in 1.5s forwards; /* Fade in animation */
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 2px 2px 4px black;
+            padding: 70px;
+            font-size: 4em;
+            opacity: 0; /* Start hidden */
+            animation: fade-in 1.5s forwards; /* Fade in animation */
+            animation-delay: 0.5s; /* Delay for the title */
+        }
+
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Gap between boxes */
+            opacity: 0; /* Start hidden */
+            animation: fade-in 1.5s forwards; /* Fade in animation */
+            animation-delay: 1s; /* Delay for the boxes */
+        }
+
+        .gift-box {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(232, 78, 83);
+            border: 3px solid #fff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease; /* Smooth transition */
+            position: relative;
+            overflow: hidden;
+            font-size: 500px; /* Increase font size for the emoji */
+            animation: pop-in 0.5s forwards; /* Animation for entrance */
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) translateY(-5px); /* Bounce effect */
+        }
+
+        .gift-box:active {
+            transform: rotate(15deg); /* Rotate on click */
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pop-in {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message-container {
+            display: none; /* Initially hidden */
+            position: fixed; /* Use fixed positioning for message display */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 5px;
+            padding: 20px;
+            color: white;
+            font-size: 1.5em;
+            z-index: 2; /* Ensure the message is above the overlay */
+            text-align: center; /* Center align the text */
+            opacity: 0; /* Start hidden */
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Animation */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            display: none; /* Initially hidden */
+            z-index: 1; /* Ensure the overlay is below the message */
+        }
+
+        .ok-button, .next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff5722; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            display: none; /* Initially hidden */
+        }
+
+        .ok-button:hover, .next-button:hover {
+            background-color: #e64a19; /* Darker shade on hover */
+        }
+
+        /* Centering the next button */
+        .next-button {
+            display: block; /* Initially hidden, shown later */
+        }
+
+        /* Optional: Style for the emoji directly in the box */
+        .gift-box .emoji {
+            font-size: 70px; /* Size of the emoji */
+            line-height: 1; /* Adjust line height for centering */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pick a Gift Box!</h1>
+    <div class="box-container">
+        <div class="gift-box" data-message="Surprise! You got a joke! Why did the scarecrow win an award? Because he was outstanding in his field! 😂">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="You found a secret message! You're awesome! Keep being you! 🌟">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="Whoops! This box is empty... Just like my brain! 🤪">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="Congratulations! You unlocked a fun fact: Did you know honey never spoils? 🍯">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="Boo! Just kidding! But here's a virtual high-five! ✋">
+            <span class="emoji">🎁</span>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div> <!-- Overlay element -->
+    <audio id="boxSound" src="https://drive.google.com/file/d/1UqKJ-HF1b_THLh3VFD_9bWrOKcBryrqH/view?usp=drive_link "></audio> <!-- Add your sound file here -->
+    <div class="message-container" id="messageContainer">
+        <div class="message" id="messageText"></div>
+        <button class="ok-button" id="okButton">OK</button> <!-- OK Button -->
+    </div>
+    
+    <button class="next-button" id="nextButton" onclick="location.href='lp2.html'">Next</button> <!-- Next Button -->
+
+    <script>
+        const boxes = document.querySelectorAll('.gift-box');
+        const boxSound = document.getElementById('boxSound');
+        const overlay = document.getElementById('overlay');
+        const messageContainer = document.getElementById('messageContainer');
+        const messageText = document.getElementById('messageText');
+        const okButton = document.getElementById('okButton');
+        const nextButton = document.getElementById('nextButton');
+
+        boxes.forEach(box => {
+            box.addEventListener('click', function() {
+                const message = this.getAttribute('data-message');
+                boxSound.currentTime = 0; // Reset sound to start
+                boxSound.play(); // Play the sound
+                messageText.textContent = message; // Set the message text
+
+                // Show the overlay and message container
+                overlay.style.display = 'block'; // Show the overlay
+                messageContainer.style.display = 'block'; // Show the message container
+                messageContainer.style.opacity = '0'; // Start hidden
+                messageContainer.style.transform = 'translate(-50%, -50%) scale(0)'; // Reset scale
+
+                // Trigger the animation after a slight delay for better effect
+                setTimeout(() => {
+                    messageContainer.style.transform = 'translate(-50%, -50%) scale(1)'; // Trigger pop effect
+                    messageContainer.style.opacity = '1'; // Fade in
+                }, 2582);
+
+                // Show the next button when a box is clicked
+                nextButton.style.display = 'block';
+            });
+        });
+
+        // Close the message and overlay when clicking the OK button
+        okButton.addEventListener('click', function() {
+            overlay.style.display = 'none'; // Hide the overlay
+            messageContainer.style.display = 'none'; // Hide the message container
+            messageContainer.style.opacity = '0'; // Reset opacity for next time
+            okButton.style.display = 'none'; // Hide the OK button
+        });
+
+        // Show OK button with the message
+        messageContainer.addEventListener('transitionend', function() {
+            okButton.style.display = 'block'; // Show the OK button after the message has faded in
+        });
+    </script>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Boxes</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+            background-image: url('img/ppg1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center; /* Center text */
+            position: relative; /* For positioning overlay */
+            opacity: 0; /* Start hidden */
+            animation: fade-in 1.5s forwards; /* Fade in animation */
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 2px 2px 4px black;
+            padding: 70px;
+            font-size: 4em;
+            opacity: 0; /* Start hidden */
+            animation: fade-in 1.5s forwards; /* Fade in animation */
+            animation-delay: 0.5s; /* Delay for the title */
+        }
+
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Gap between boxes */
+            opacity: 0; /* Start hidden */
+            animation: fade-in 1.5s forwards; /* Fade in animation */
+            animation-delay: 1s; /* Delay for the boxes */
+        }
+
+        .gift-box {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(232, 78, 83);
+            border: 3px solid #fff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease; /* Smooth transition */
+            position: relative;
+            overflow: hidden;
+            font-size: 500px; /* Increase font size for the emoji */
+            animation: pop-in 0.5s forwards; /* Animation for entrance */
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) translateY(-5px); /* Bounce effect */
+        }
+
+        .gift-box:active {
+            transform: rotate(15deg); /* Rotate on click */
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pop-in {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message-container {
+            display: none; /* Initially hidden */
+            position: fixed; /* Use fixed positioning for message display */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 5px;
+            padding: 20px;
+            color: white;
+            font-size: 1.5em;
+            z-index: 2; /* Ensure the message is above the overlay */
+            text-align: center; /* Center align the text */
+            opacity: 0; /* Start hidden */
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Animation */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            display: none; /* Initially hidden */
+            z-index: 1; /* Ensure the overlay is below the message */
+        }
+
+        .ok-button, .next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff5722; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            display: none; /* Initially hidden */
+        }
+
+        .ok-button:hover, .next-button:hover {
+            background-color: #e64a19; /* Darker shade on hover */
+        }
+
+        /* Centering the next button */
+        .next-button {
+            display: block; /* Initially hidden, shown later */
+        }
+
+        /* Optional: Style for the emoji directly in the box */
+        .gift-box .emoji {
+            font-size: 70px; /* Size of the emoji */
+            line-height: 1; /* Adjust line height for centering */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pick a Gift Box!</h1>
+    <div class="box-container">
+        <div class="gift-box" data-message="Surprise! You got a joke! Why did the scarecrow win an award? Because he was outstanding in his field! 😂">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="You found a secret message! You're awesome! Keep being you! 🌟">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="Whoops! This box is empty... Just like my brain! 🤪">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="Congratulations! You unlocked a fun fact: Did you know honey never spoils? 🍯">
+            <span class="emoji">🎁</span>
+        </div>
+        <div class="gift-box" data-message="Boo! Just kidding! But here's a virtual high-five! ✋">
+            <span class="emoji">🎁</span>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div> <!-- Overlay element -->
+    <audio id="boxSound" src="https://drive.google.com/file/d/1UqKJ-HF1b_THLh3VFD_9bWrOKcBryrqH/view?usp=drive_link "></audio> <!-- Add your sound file here -->
+    <div class="message-container" id="messageContainer">
+        <div class="message" id="messageText"></div>
+        <button class="ok-button" id="okButton">OK</button> <!-- OK Button -->
+    </div>
+    
+    <button class="next-button" id="nextButton" onclick="location.href='lp2.html'">Next</button> <!-- Next Button -->
+
+    <script>
+        const boxes = document.querySelectorAll('.gift-box');
+        const boxSound = document.getElementById('boxSound');
+        const overlay = document.getElementById('overlay');
+        const messageContainer = document.getElementById('messageContainer');
+        const messageText = document.getElementById('messageText');
+        const okButton = document.getElementById('okButton');
+        const nextButton = document.getElementById('nextButton');
+
+        boxes.forEach(box => {
+            box.addEventListener('click', function() {
+                const message = this.getAttribute('data-message');
+                boxSound.currentTime = 0; // Reset sound to start
+                boxSound.play(); // Play the sound
+                messageText.textContent = message; // Set the message text
+
+                // Show the overlay and message container
+                overlay.style.display = 'block'; // Show the overlay
+                messageContainer.style.display = 'block'; // Show the message container
+                messageContainer.style.opacity = '0'; // Start hidden
+                messageContainer.style.transform = 'translate(-50%, -50%) scale(0)'; // Reset scale
+
+                // Trigger the animation after a slight delay for better effect
+                setTimeout(() => {
+                    messageContainer.style.transform = 'translate(-50%, -50%) scale(1)'; // Trigger pop effect
+                    messageContainer.style.opacity = '1'; // Fade in
+                }, 2582);
+
+                // Show the next button when a box is clicked
+                nextButton.style.display = 'block';
+            });
+        });
+
+        // Close the message and overlay when clicking the OK button
+        okButton.addEventListener('click', function() {
+            overlay.style.display = 'none'; // Hide the overlay
+            messageContainer.style.display = 'none'; // Hide the message container
+            messageContainer.style.opacity = '0'; // Reset opacity for next time
+            okButton.style.display = 'none'; // Hide the OK button
+        });
+
+        // Show OK button with the message
+        messageContainer.addEventListener('transitionend', function() {
+            okButton.style.display = 'block'; // Show the OK button after the message has faded in
+        });
+    </script>
+</body>
+</html>
+>>>>>>> aa67ecdcb1cd4714e35999350e3cc3d7fa03dd8a
